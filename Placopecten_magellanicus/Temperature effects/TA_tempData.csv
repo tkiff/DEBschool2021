@@ -1,0 +1,50 @@
+﻿temp_c,Rate,ID,Author,type,unit
+1,0.063,a,Shumway et al. 1988,Respiration,ml O2/hr/g dry tissue
+5,0.152,a,Shumway et al. 1988,Respiration,ml O2/hr/g dry tissue
+10,0.241,a,Shumway et al. 1988,Respiration,ml O2/hr/g dry tissue
+15,0.337,a,Shumway et al. 1988,Respiration,ml O2/hr/g dry tissue
+20,0.373,a,Shumway et al. 1988,Respiration,ml O2/hr/g dry tissue
+6,8.436,b,Pilditch and Grant 1999,Respiration low food,umol 02/g/hr
+10,10.292,b,Pilditch and Grant 1999,Respiration low food,umol 02/g/hr
+15,18.402,b,Pilditch and Grant 1999,Respiration low food,umol 02/g/hr
+6,8.986,b,Pilditch and Grant 1999,Respiration low food,umol 02/g/hr
+10,10.636,b,Pilditch and Grant 1999,Respiration low food,umol 02/g/hr
+15,19.639,b,Pilditch and Grant 1999,Respiration low food,umol 02/g/hr
+6,8.643,b,Pilditch and Grant 1999,Respiration low food,umol 02/g/hr
+10,11.598,b,Pilditch and Grant 1999,Respiration low food,umol 02/g/hr
+15,15.515,b,Pilditch and Grant 1999,Respiration low food,umol 02/g/hr
+6,11.605,c,Pilditch and Grant 1999,Respiration high food,umol 02/g/hr
+10,14.444,c,Pilditch and Grant 1999,Respiration high food,umol 02/g/hr
+15,21.111,c,Pilditch and Grant 1999,Respiration high food,umol 02/g/hr
+6,11.358,c,Pilditch and Grant 1999,Respiration high food,umol 02/g/hr
+10,13.827,c,Pilditch and Grant 1999,Respiration high food,umol 02/g/hr
+15,21.79,c,Pilditch and Grant 1999,Respiration high food,umol 02/g/hr
+6,12.469,c,Pilditch and Grant 1999,Respiration high food,umol 02/g/hr
+10,14.753,c,Pilditch and Grant 1999,Respiration high food,umol 02/g/hr
+15,18.704,c,Pilditch and Grant 1999,Respiration high food,umol 02/g/hr
+6,1.23,d,Pilditch and Grant 1999,Ammonium excretion high food,umol NH4/g/hr
+10,1.681,d,Pilditch and Grant 1999,Ammonium excretion high food,umol NH4/g/hr
+15,3.774,d,Pilditch and Grant 1999,Ammonium excretion high food,umol NH4/g/hr
+6,1.256,d,Pilditch and Grant 1999,Ammonium excretion high food,umol NH4/g/hr
+10,1.594,d,Pilditch and Grant 1999,Ammonium excretion high food,umol NH4/g/hr
+15,2.697,d,Pilditch and Grant 1999,Ammonium excretion high food,umol NH4/g/hr
+6,1.203,d,Pilditch and Grant 1999,Ammonium excretion high food,umol NH4/g/hr
+10,1.612,d,Pilditch and Grant 1999,Ammonium excretion high food,umol NH4/g/hr
+15,2.836,d,Pilditch and Grant 1999,Ammonium excretion high food,umol NH4/g/hr
+6,1,e,Pilditch and Grant 1999,Ammonium excretion low food,umol NH4/g/hr
+10,1.348,e,Pilditch and Grant 1999,Ammonium excretion low food,umol NH4/g/hr
+15,2.509,e,Pilditch and Grant 1999,Ammonium excretion low food,umol NH4/g/hr
+6,1.107,e,Pilditch and Grant 1999,Ammonium excretion low food,umol NH4/g/hr
+10,1.304,e,Pilditch and Grant 1999,Ammonium excretion low food,umol NH4/g/hr
+15,2.429,e,Pilditch and Grant 1999,Ammonium excretion low food,umol NH4/g/hr
+6,1,e,Pilditch and Grant 1999,Ammonium excretion low food,umol NH4/g/hr
+10,1.437,e,Pilditch and Grant 1999,Ammonium excretion low food,umol NH4/g/hr
+15,2.25,e,Pilditch and Grant 1999,Ammonium excretion low food,umol NH4/g/hr
+3,1.337,f,MacDonald and Thompsopn 1986,VO2,ml/hr
+2,1.368,f,MacDonald and Thompsopn 1986,VO3,ml/hr
+1,1.449,f,MacDonald and Thompsopn 1986,VO4,ml/hr
+4,2.328,f,MacDonald and Thompsopn 1986,VO5,ml/hr
+5,2.8,f,MacDonald and Thompsopn 1986,VO6,ml/hr
+9,3.458,f,MacDonald and Thompsopn 1986,VO7,ml/hr
+12,3.368,f,MacDonald and Thompsopn 1986,VO8,ml/hr
+9,2.007,f,MacDonald and Thompsopn 1986,VO9,ml/hr
