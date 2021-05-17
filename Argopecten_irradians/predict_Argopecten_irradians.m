@@ -53,7 +53,7 @@ function [prdData, info] = predict_Argopecten_irradians(par, data, auxData)
   TC_tL1 = tempcorr(temp.tL3, T_ref, T_A);
   TC_tL2 = tempcorr(temp.tL3, T_ref, T_A);
   TC_tL3 = tempcorr(temp.tL3, T_ref, T_A);
-%   TC_TJO = tempcorr(C2K(TJO(:,1)), T_ref, T_A);
+  TC_TJO = tempcorr(C2K(TJO(:,1)), T_ref, T_A);
 %   TC_WJO = tempcorr(temp.WJO, T_ref, T_A);
 
 %% Zero-variate data
@@ -170,18 +170,18 @@ prdData.Ri  = RT_i;
 % Code for oxygen consumption data from the AmP Placopecten magellanicus entry
   
 %   % Compute parameters for oxygen consumption rate predictions
-%   p_ref  = p_Am * L_m^2; % J/d, max assimilation power at max size and T_ref
-%   pars_p = [kap; kap_R; g; k_J; k_M; L_T; v; U_Hb; U_Hj; U_Hp];
+  p_ref  = p_Am * L_m^2; % J/d, max assimilation power at max size and T_ref
+  pars_p = [kap; kap_R; g; k_J; k_M; L_T; v; U_Hb; U_Hj; U_Hp];
 %   
 %   % Temperature vs. oxygen consumption rate
-%   f = f_TJO; W = Wd0;
-%   [~, ~, ~, l_j, l_p, l_b, ~, ~, ~] = get_tj(pars_tj, f);
-%   L        = (W / d_V / (1 + f * w)).^(1/3);
-%   pACSJGRD = p_ref * scaled_power_j(L, f, pars_p, l_b, l_j, l_p);
-%   pADG     = pACSJGRD(:,[1 7 5])';                     % J/d,    assimilation, dissipation, growth power
-%   J_O      = eta_O * pADG;                             % mol/d,  fluxes of organics J_X, J_V, J_E, J_P in rows
-%   J_M      = -n_M \ n_O * J_O;                         % mol/d,  fluxes of minerals J_C, J_H, J_O, J_N in rows, A, D, G in cols
-%   ETJO     = -24.4e3 / 24 * J_M(3,:)' .* TC_TJO / Wd0; % mLO2/h, O2-consumption
+  f = f_TJO; W = Wd0;
+  [~, ~, ~, l_j, l_p, l_b, ~, ~, ~] = get_tj(pars_tj, f);
+  L        = (W / d_V / (1 + f * w)).^(1/3);
+  pACSJGRD = p_ref * scaled_power_j(L, f, pars_p, l_b, l_j, l_p);
+  pADG     = pACSJGRD(:,[1 7 5])';                     % J/d,    assimilation, dissipation, growth power
+  J_O      = eta_O * pADG;                             % mol/d,  fluxes of organics J_X, J_V, J_E, J_P in rows
+  J_M      = -n_M \ n_O * J_O;                         % mol/d,  fluxes of minerals J_C, J_H, J_O, J_N in rows, A, D, G in cols
+  ETJO     = -24.4e3 / 24 * J_M(3,:)' .* TC_TJO / Wd0; % mLO2/h, O2-consumption
 %   
 %    % Dry weight vs. oxygen consumption rate
 %   f = f_WJO; TC = TC_WJO; W = WJO(:,1);
@@ -198,7 +198,7 @@ prdData.Ri  = RT_i;
   prdData.tL2 = ELw2;
   prdData.tL3 = ELw3;
   prdData.LWd = EWd;
-%   prdData.TJO = ETJO;
+  prdData.TJO = ETJO;
 %   prdData.WJO   = EWJO;
   
 end

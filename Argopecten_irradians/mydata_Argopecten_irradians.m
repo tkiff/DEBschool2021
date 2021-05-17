@@ -153,10 +153,10 @@ temp.LWd = C2K(9.5); units.temp.LWd = 'K'; label.temp.LWd = 'temperature';
 
 % Oxygen consumption data excluded due to errors while running the procedure
 
-% % Temperature vs. oxygen consumption rate
-% data.TJO = [1.52 7.39 8.63 10.43 11.40 15.67 17.57 20.32 23.05; % °C, temperature
-%             0.067 0.199 0.345 0.367 0.488 1.043 0.931 0.814 1.098]'; % mLO2/h, oxygen consumption rate
-% units.TJO = {'°C', 'mL/h'}; label.TJO = {'temperature', 'O_2 consumption rate'}; bibkey.TJO = 'BricEpp1987';
+% Temperature vs. oxygen consumption rate
+data.TJO = [1.52 7.39 8.63 10.43 11.40 15.67 17.57 20.32 23.05; % °C, temperature
+            0.067 0.199 0.345 0.367 0.488 1.043 0.931 0.814 1.098]'; % mLO2/h, oxygen consumption rate
+units.TJO = {'°C', 'mL/h'}; label.TJO = {'temperature', 'O_2 consumption rate'}; bibkey.TJO = 'BricEpp1987';
 % 
 %  % Dry weight vs. oxygen consumption rate
 % data.WJO = [0.457 0.677 0.675 0.678 0.746 0.912 0.918 0.994 1.113 0.963 0.970 1.064 1.290 0.959 0.960 1.537 1.543 1.510 1.522 1.703 2.024 1.694 2.026 2.254 2.377 2.256 2.540 2.642 2.734 2.717 2.561 3.185 3.183 2.927; % g, dry weight
@@ -208,7 +208,7 @@ metaData.grp.comment = {comment1};
 %D1 = 'Author_mod_1: I found information on the number of eggs per female as a function of length in Anon2013 that was much higher than in Anon2015 but chose to not include it as the temperature was not provided';
 % optional bibkey: metaData.bibkey.D1 = 'Anon2013';
 
-metaData.discussion = struct('D1', D1,);
+%metaData.discussion = struct('D1', D1,);
 
 %% Facts
 % list facts: F1, F2, etc.
