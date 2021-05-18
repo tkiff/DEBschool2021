@@ -10,9 +10,7 @@ function [data, auxData, metaData, txtData, weights] = mydata_Argopecten_irradia
   % [data, auxData, metaData, txtData, weights] = <../mydata_my_pet.m *mydata_my_pet*>
   
   %% Description
- 
-  % I work with a university computuer and cannot update the operating
-  % system right now to allow the AmPeps tool to work
+
   
 %% set metaData
 
@@ -24,10 +22,10 @@ metaData.species    = 'Argopecten_irradians'; %
 metaData.species_en = 'Bay Scallop'; 
 metaData.ecoCode.climate = {'MB', 'MB','MC'};
 metaData.ecoCode.ecozone = {'MAW', 'MASW','MAg'};
-metaData.ecoCode.habitat = {'Mcd', ''};
+metaData.ecoCode.habitat = {'Mcd'};
 metaData.ecoCode.embryo  = {'Mp'};
 metaData.ecoCode.migrate = {};
-metaData.ecoCode.food    = {'D', 'Pp'};
+metaData.ecoCode.food    = {'biPp'};
 metaData.ecoCode.gender  = {'Hh'};
 metaData.ecoCode.reprod  = {'O'}; % Os? can live to second repo event but not often
 metaData.T_typical  = C2K(20); % K, body temp
@@ -145,13 +143,13 @@ comment.tL3 = 'Temperature varies';
 
  % Shell length vs. tissue dry weight from Niantic River Connecticut
  % possibly a high food site, scallops were recorded up to 70 mm?
-data.LWd = [38.01 44.92 50.42 55.83 61.26 66.79 72.12; % mm, shell length
-            0.71 1.17 1.53 1.87 2.39 3.00 3.37]'; % g, tissue dry weight
-data.LWd(:,1) = 0.1 * data.LWd(:,1); % convert mm to cm
-units.LWd = {'cm', 'g'}; label.LWd = {'shell length', 'tissue dry weight'}; bibkey.LWd = 'BricKrau1992';
-temp.LWd = C2K(9.5); units.temp.LWd = 'K'; label.temp.LWd = 'temperature';
+% data.LWd = [38.01 44.92 50.42 55.83 61.26 66.79 72.12; % mm, shell length
+%             0.71 1.17 1.53 1.87 2.39 3.00 3.37]'; % g, tissue dry weight
+% data.LWd(:,1) = 0.1 * data.LWd(:,1); % convert mm to cm
+% units.LWd = {'cm', 'g'}; label.LWd = {'shell length', 'tissue dry weight'}; bibkey.LWd = 'BricKrau1992';
+% temp.LWd = C2K(9.5); units.temp.LWd = 'K'; label.temp.LWd = 'temperature';
 
-% Oxygen consumption data excluded due to errors while running the procedure
+
 
 % Temperature vs. oxygen consumption rate
 data.TJO = [1.52 7.39 8.63 10.43 11.40 15.67 17.57 20.32 23.05; % °C, temperature
@@ -160,7 +158,7 @@ units.TJO = {'°C', 'mL/h'}; label.TJO = {'temperature', 'O_2 consumption rate'}
 % 
 %  % Dry weight vs. oxygen consumption rate
 % data.WJO = [0.457 0.677 0.675 0.678 0.746 0.912 0.918 0.994 1.113 0.963 0.970 1.064 1.290 0.959 0.960 1.537 1.543 1.510 1.522 1.703 2.024 1.694 2.026 2.254 2.377 2.256 2.540 2.642 2.734 2.717 2.561 3.185 3.183 2.927; % g, dry weight
-%              0.124 0.155 0.164 0.176 0.195 0.170 0.158 0.163 0.187 0.195 0.210 0.214 0.234 0.274 0.329 0.350 0.394 0.195 0.238 0.226 0.246 0.274 0.295 0.318 0.335 0.356 0.338 0.318 0.381 0.399 0.413 0.394 0.375 0.486]'; % mLO2/h, oxygen consumption rate
+%             0.124 0.155 0.164 0.176 0.195 0.170 0.158 0.163 0.187 0.195 0.210 0.214 0.234 0.274 0.329 0.350 0.394 0.195 0.238 0.226 0.246 0.274 0.295 0.318 0.335 0.356 0.338 0.318 0.381 0.399 0.413 0.394 0.375 0.486]'; % mLO2/h, oxygen consumption rate
 % units.WJO = {'g', 'mL/h'}; label.WJO = {'dry weight', 'O_2 consumption rate'}; bibkey.WJO = 'BricKrau1987';
 % temp.WJO = C2K(7.4); units.temp.WJO = 'K'; label.temp.WJO = 'temperature';
 
@@ -168,6 +166,9 @@ units.TJO = {'°C', 'mL/h'}; label.TJO = {'temperature', 'O_2 consumption rate'}
 
 %% set weights for all real data
 weights = setweights(data, []);
+weights.aj = 5 * weights.aj;
+weights.ab = 2 * weights.ab;
+weights.am = 2 * weights.am;
 
 %% overwriting weights (remove these remarks after editing the file)
 % the weights were set automatically with the function setweigths,
@@ -177,7 +178,7 @@ weights = setweights(data, []);
 % weights.Wdi = 100 * weights.Wdi; % Much more confidence in the ultimate dry
 %                                % weights than the other data points
 % uni-variate data: 
-% weights.tL = 2 * weights.tL;
+ %weights.tL = 2 * weights.tL;
 
 %% set pseudodata and respective weights
 % (pseudo data are in data.psd and weights are in weights.psd)
