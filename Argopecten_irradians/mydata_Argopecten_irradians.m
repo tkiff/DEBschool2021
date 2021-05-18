@@ -10,9 +10,7 @@ function [data, auxData, metaData, txtData, weights] = mydata_Argopecten_irradia
   % [data, auxData, metaData, txtData, weights] = <../mydata_my_pet.m *mydata_my_pet*>
   
   %% Description
- 
-  % I work with a university computuer and cannot update the operating
-  % system right now to allow the AmPeps tool to work
+
   
 %% set metaData
 
@@ -24,10 +22,10 @@ metaData.species    = 'Argopecten_irradians'; %
 metaData.species_en = 'Bay Scallop'; 
 metaData.ecoCode.climate = {'MB', 'MB','MC'};
 metaData.ecoCode.ecozone = {'MAW', 'MASW','MAg'};
-metaData.ecoCode.habitat = {'Mcd', ''};
+metaData.ecoCode.habitat = {'Mcd'};
 metaData.ecoCode.embryo  = {'Mp'};
 metaData.ecoCode.migrate = {};
-metaData.ecoCode.food    = {'D', 'Pp'};
+metaData.ecoCode.food    = {'biPp'};
 metaData.ecoCode.gender  = {'Hh'};
 metaData.ecoCode.reprod  = {'O'}; % Os? can live to second repo event but not often
 metaData.T_typical  = C2K(20); % K, body temp
@@ -100,11 +98,11 @@ data.Lp = 5.5;      units.Lp = 'cm'; label.Lp = 'shell length at puberty';      
 data.Li = 9;      units.Li = 'cm'; label.Li = 'ultimate shell length';         bibkey.Li = 'Beld1910';
     % Data from massachuessets
 
-data.Wdb = 0.0000001334;     units.Wdb = 'g'; label.Wdb = 'dry tissue weight at birth';         bibkey.Wdb = {'Guess','FariUria1997'};
-    % Data from Argopecten purpuratus AmP entry
+data.Wdb = 8.39e-7;     units.Wdb = 'g'; label.Wdb = 'dry tissue weight at birth';         bibkey.Wdb = {'Guess','FariUria1997'};
+    % estimated with allometric realationship of larvae from Argopecten purpuratus AmP entry
     % has a later age at birth (4 d)
-data.Wdj = 0.00000098;     units.Wdj = 'g'; label.Wdj = 'dry tissue weight at metamorphosis'; bibkey.Wdj = {'Guess','FariUria1997'};
-    % Data from Argopecten purpuratus AmP entry
+data.Wdj = 4.86e-6;     units.Wdj = 'g'; label.Wdj = 'dry tissue weight at metamorphosis'; bibkey.Wdj = {'Guess','FariUria1997'};
+    % estimated with allometric realationship of larvae from Argopecten purpuratus AmP entry
     % has a later age at metamorphis (24 days)
 data.Wdp = 1.6;     units.Wdp = 'g'; label.Wdp = 'dry tissue weight at puberty';       bibkey.Wdp = {'Guess','BricKrau1992'};
 data.Wdi = 5.3;     units.Wdi = 'g'; label.Wdi = 'ultimate dry tissue weight';         bibkey.Wdi = {'Guess','BricKrau1992'};
@@ -141,33 +139,42 @@ data.tL3 = [27 38 59 83 111 151 166 197 222 245 273 333;    % d, time since birt
 data.tL3(:,2) = 0.1 * data.tL3(:,2); % convert mm to cm
 units.tL3   = {'d', 'cm'};  label.tL3 = {'time since birth', 'Shell height'};  bibkey.tL3 = 'LuBlak1997';
 temp.tL3    = C2K(24.6);  units.temp.tL3 = 'K'; label.temp.tL3 = 'temperature';
-comment.tL3 = 'Temperature varies'; 
+comment.tL3 = ''; 
 
  % Shell length vs. tissue dry weight from Niantic River Connecticut
  % possibly a high food site, scallops were recorded up to 70 mm?
-data.LWd = [38.01 44.92 50.42 55.83 61.26 66.79 72.12; % mm, shell length
-            0.71 1.17 1.53 1.87 2.39 3.00 3.37]'; % g, tissue dry weight
-data.LWd(:,1) = 0.1 * data.LWd(:,1); % convert mm to cm
-units.LWd = {'cm', 'g'}; label.LWd = {'shell length', 'tissue dry weight'}; bibkey.LWd = 'BricKrau1992';
-temp.LWd = C2K(9.5); units.temp.LWd = 'K'; label.temp.LWd = 'temperature';
+% data.LWd = [38.01 44.92 50.42 55.83 61.26 66.79 72.12; % mm, shell length
+%             0.71 1.17 1.53 1.87 2.39 3.00 3.37]'; % g, tissue dry weight
+% data.LWd(:,1) = 0.1 * data.LWd(:,1); % convert mm to cm
+% units.LWd = {'cm', 'g'}; label.LWd = {'shell length', 'tissue dry weight'}; bibkey.LWd = 'BricKrau1992';
+% temp.LWd = C2K(9.5); units.temp.LWd = 'K'; label.temp.LWd = 'temperature';
 
-% Oxygen consumption data excluded due to errors while running the procedure
+
 
 % Temperature vs. oxygen consumption rate
 data.TJO = [1.52 7.39 8.63 10.43 11.40 15.67 17.57 20.32 23.05; % °C, temperature
             0.067 0.199 0.345 0.367 0.488 1.043 0.931 0.814 1.098]'; % mLO2/h, oxygen consumption rate
 units.TJO = {'°C', 'mL/h'}; label.TJO = {'temperature', 'O_2 consumption rate'}; bibkey.TJO = 'BricEpp1987';
-% 
+
 %  % Dry weight vs. oxygen consumption rate
+% average chl from these sites was ~ 4 ug/l
 % data.WJO = [0.457 0.677 0.675 0.678 0.746 0.912 0.918 0.994 1.113 0.963 0.970 1.064 1.290 0.959 0.960 1.537 1.543 1.510 1.522 1.703 2.024 1.694 2.026 2.254 2.377 2.256 2.540 2.642 2.734 2.717 2.561 3.185 3.183 2.927; % g, dry weight
-%              0.124 0.155 0.164 0.176 0.195 0.170 0.158 0.163 0.187 0.195 0.210 0.214 0.234 0.274 0.329 0.350 0.394 0.195 0.238 0.226 0.246 0.274 0.295 0.318 0.335 0.356 0.338 0.318 0.381 0.399 0.413 0.394 0.375 0.486]'; % mLO2/h, oxygen consumption rate
+%             0.124 0.155 0.164 0.176 0.195 0.170 0.158 0.163 0.187 0.195 0.210 0.214 0.234 0.274 0.329 0.350 0.394 0.195 0.238 0.226 0.246 0.274 0.295 0.318 0.335 0.356 0.338 0.318 0.381 0.399 0.413 0.394 0.375 0.486]'; % mLO2/h, oxygen consumption rate
 % units.WJO = {'g', 'mL/h'}; label.WJO = {'dry weight', 'O_2 consumption rate'}; bibkey.WJO = 'BricKrau1987';
 % temp.WJO = C2K(7.4); units.temp.WJO = 'K'; label.temp.WJO = 'temperature';
 
-% average chl from these sites was ~ 4 ug/l
+
 
 %% set weights for all real data
 weights = setweights(data, []);
+% confident in some early life stage data, lots of hatchery data and
+% sources
+weights.aj = 5 * weights.aj;
+weights.ab = 2 * weights.ab;
+weights.am = 2 * weights.am;
+weights.ab = 2 * weights.Lb;
+weights.am = 2 * weights.Lj;
+
 
 %% overwriting weights (remove these remarks after editing the file)
 % the weights were set automatically with the function setweigths,
@@ -177,7 +184,7 @@ weights = setweights(data, []);
 % weights.Wdi = 100 * weights.Wdi; % Much more confidence in the ultimate dry
 %                                % weights than the other data points
 % uni-variate data: 
-% weights.tL = 2 * weights.tL;
+ %weights.tL = 2 * weights.tL;
 
 %% set pseudodata and respective weights
 % (pseudo data are in data.psd and weights are in weights.psd)
@@ -200,7 +207,7 @@ if exist('comment','var')
 end
 
 %% group plots
-set1 = {'tL1','tL2'}; comment1 = {'Upper and Lower Damariscotta River'};
+set1 = {'tL1','tL2'}; comment1 = {'Lower and upper Damariscotta River'};
 metaData.grp.sets    = {set1};
 metaData.grp.comment = {comment1};
 
