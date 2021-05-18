@@ -121,18 +121,20 @@ prdData.Ri  = RT_i;
 %   ELw1 = L/ del_M; 
   
   [t_j, t_p, t_b, l_j, l_p, l_b, l_i, rho_j, rho_B] = get_tj(pars_tj, f_tL1);
-  r_B = rho_B * k_M; L_i = l_i * L_m;
-  [t L] = ode45(@get_L1, tL1(:,1), Lw_0*del_M, [], r_B, L_i, T_ref, T_A); 
-  ELw1 = L/ del_M;
+  r_B = rho_B * k_M; L_i = l_i * L_m; L_b = l_b * L_m; 
+  t_start = tL1(1,1);
+  [t, L] = ode45(@get_L1, [0; tL1(:,1)], L_b, [], r_B, L_i, T_ref, T_A, t_start); 
+  ELw1 = L(2:end)/ del_M;
   
 % time-length for the upper damariscotta River (tL2)
 %   [t, L] = ode45(@get_L2, tL2(:,1), L_b, [], L_j, L_i, r_j, r_B, T_ref, T_A);
 %   ELw2 = L/ del_M; 
   
   [t_j, t_p, t_b, l_j, l_p, l_b, l_i, rho_j, rho_B] = get_tj(pars_tj, f_tL2);
-  r_B = rho_B * k_M; L_i = l_i * L_m;
-  [t L] = ode45(@get_L2, tL2(:,1), Lw_0*del_M, [], r_B, L_i, T_ref, T_A); 
-  ELw2 = L/ del_M;
+  r_B = rho_B * k_M; L_i = l_i * L_m; L_b = l_b * L_m;
+  t_start = tL2(1,1);
+  [t, L] = ode45(@get_L2, [0; tL2(:,1)], L_b, [], r_B, L_i, T_ref, T_A, t_start); 
+  ELw2 = L(2:end)/ del_M;
 
  
   % Time vs. shell length in Tampa Bay
@@ -189,12 +191,20 @@ prdData.Ri  = RT_i;
   
 end
 
-function dL = get_L1(t, L, r_B, L_i, T_ref, T_A)
-  TC = tempcorr(C2K(10+8*sin(2*pi*(t+50)/365)), T_ref, T_A);
-  dL = TC * r_B * (L_i -L);
+function dL = get_L1(t, L, r_B, L_i, T_ref, T_A, t_start)
+  if t < t_start
+      TC = tempcorr(C2K(24), T_ref, T_A);
+  else
+      TC = tempcorr(C2K(10+8*sin(2*pi*(t+50)/365)), T_ref, T_A);
+  end
+  dL = TC * r_B * (L_i - L);
 end
 
-function dL = get_L2(t, L, r_B, L_i, T_ref, T_A)
+function dL = get_L2(t, L, r_B, L_i, T_ref, T_A, t_start)
+  if t < t_start
+      TC = tempcorr(C2K(24), T_ref, T_A);
+  else
   TC = tempcorr(C2K(12+10*sin(2*pi*(t+50)/365)), T_ref, T_A);
-  dL = TC * r_B * (L_i -L);
+  end
+  dL = TC * r_B * (L_i - L);
 end
