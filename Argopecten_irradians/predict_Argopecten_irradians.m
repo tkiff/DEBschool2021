@@ -64,16 +64,8 @@ end
 %% Zero-variate data
 
 % Life cycle - from Placopecten magellanicus code
-%  pars_tj = [g k l_T v_Hb v_Hj v_Hp];
-%  [t_j, t_p, t_b, l_j, l_p, l_b, l_i, ~, ~, info] = get_tj(pars_tj, f); % -, scaled times & lengths at f
-
-% life cycle - from Spirula spirula code
-% taken from AmP video on varying temperature, TC was changed to TC_am because it was
-% the only variable in the Spirula predict file
-pars_tj = [g k l_T v_Hb v_Hj v_Hp];
-[t_j, t_p, t_b, l_j, l_p, l_b, l_i, rho_j, rho_B, info] = get_tj(pars_tj, f);
-kT_M = k_M * TC_am; r_B = rho_B * k_M; rT_B = r_B * TC_am; % 1/d, von Bert growth rate
-r_j = rho_j * k_M; rT_j = r_j * TC_am; % 1/d, exponential growth rate
+ pars_tj = [g k l_T v_Hb v_Hj v_Hp];
+ [t_j, t_p, t_b, l_j, l_p, l_b, l_i, ~, ~, info] = get_tj(pars_tj, f); % -, scaled times & lengths at f
 
  % Birth
 L_b  = L_m * l_b;                 % cm, structural length at birth at f

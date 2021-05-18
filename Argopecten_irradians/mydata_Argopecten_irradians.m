@@ -169,11 +169,11 @@ units.TJO = {'°C', 'mL/h'}; label.TJO = {'temperature', 'O_2 consumption rate'}
 weights = setweights(data, []);
 % confident in some early life stage data, lots of hatchery data and
 % sources
-weights.aj = 5 * weights.aj;
-weights.ab = 2 * weights.ab;
-weights.am = 2 * weights.am;
-weights.ab = 2 * weights.Lb;
-weights.am = 2 * weights.Lj;
+% weights.aj = 5 * weights.aj;
+% weights.ab = 2 * weights.ab;
+% weights.am = 2 * weights.am;
+% weights.ab = 2 * weights.Lb;
+% weights.am = 2 * weights.Lj;
 
 
 %% overwriting weights (remove these remarks after editing the file)
