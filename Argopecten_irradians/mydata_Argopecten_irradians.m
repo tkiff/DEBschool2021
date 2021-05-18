@@ -115,7 +115,7 @@ data.Ri   = 2094;       units.Ri      = '#/d'; label.Ri      = 'maximum reprod r
 %% uni-variate data
 
 
-% Time - length data for cultured bay scallops at a cold site outside their normal range (Maine)
+% Time since birth data for cultured bay scallops at a cold site outside their normal range (Maine)
 % two locations upper river and lower river
 % lower river site = average chl is ~3 ug/l
 data.tL1 = [51 82 113 142 174 326 387 418 449 539;    % d, time since birth
@@ -132,7 +132,7 @@ units.tL2   = {'d', 'cm'};  label.tL2 = {'time since birth', 'Shell height'};  b
 temp.tL2    = C2K(12.62);  units.temp.tL2 = 'K'; label.temp.tL2 = 'temperature';
 comment.tL2 = 'Temperature varies by 12+10*sin(2*pi*(t+50)/365)'; 
 
-% Shell height growth from warm site in Tampa bay florida
+% Time since birth data from warm site in Tampa bay florida
 % lots up food in bay, but high biofouling and stocking densities may have reduced acess
 data.tL3 = [27 38 59 83 111 151 166 197 222 245 273 333;    % d, time since birth
            0.87 2.28 4.53 7.35 9.47 14.25 17.21 23.40 31.26 39.13 42.93 49.98]';  % mm, shell height
