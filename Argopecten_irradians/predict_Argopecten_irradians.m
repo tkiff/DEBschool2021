@@ -202,7 +202,7 @@ end
 
 function dL = get_L2(t, L, r_B, L_i, T_ref, T_A, t_start)
   if t < t_start
-      TC = tempcorr(C2K(240, T_ref, T_A);
+      TC = tempcorr(C2K(20), T_ref, T_A);
   else
   TC = tempcorr(C2K(12+10*sin(2*pi*(t+50)/365)), T_ref, T_A);
   end
