@@ -129,7 +129,7 @@ end
   J_M      = -n_M \ n_O * J_O;                         % mol/d,  fluxes of minerals J_C, J_H, J_O, J_N in rows, A, D, G in cols
   ETJO     = -24.4e3 / 24 * J_M(3,:)' .* TC_TJO / Wd0; % mLO2/h, O2-consumption
   
-  % Dry weight vs. oxygen consumption rate at 1 °C
+  % Dry weight vs. oxygen consumption rate 
   f = f_WJO; TC = TC_WJO; W = WJO(:,1);
   [~, ~, ~, l_j, l_p, l_b, ~, ~, ~] = get_tj(pars_tj, f);
   L        = (W / d_V / (1 + f * w)).^(1/3);
