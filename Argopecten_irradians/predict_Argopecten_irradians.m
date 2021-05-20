@@ -133,12 +133,17 @@ end
   f = f_WJO; TC = TC_WJO; W = WJO(:,1);
   [~, ~, ~, l_j, l_p, l_b, ~, ~, ~] = get_tj(pars_tj, f);
   L        = (W / d_V / (1 + f * w)).^(1/3);
+  
+  [L, rows, occurence] = unique(L); % pulls out unique time elements
   pACSJGRD = TC * p_ref * scaled_power_j(L, f, pars_p, l_b, l_j, l_p);
   pADG     = pACSJGRD(:,[1 7 5])';     % J/d,    assimilation, dissipation, growth power
   J_O      = eta_O * pADG;             % mol/d,  fluxes of organics J_X, J_V, J_E, J_P in rows
   J_M      = -n_M \ n_O * J_O;         % mol/d,  fluxes of minerals J_C, J_H, J_O, J_N in rows, A, D, G in cols
-  EWJO     = -24.4e3 / 24 * J_M(3,:)'; % mLO2/h, O2 consumption
-  
+  WJO     = -24.4e3 / 24 * J_M(3,:)'; % mLO2/h, O2 consumption
+  EWJO = [];
+  for i = 1:length(rows)
+        EWJO = [EWJO; WJO(i) + ones(length(find(occurence == i)),1)];    
+  end
   
   % pack to output
   % the names of the fields in the structure must be the same as the data names in the mydata file
