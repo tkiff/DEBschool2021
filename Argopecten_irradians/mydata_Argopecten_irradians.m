@@ -148,7 +148,7 @@ weights = setweights(data, []);
 % confident in some early life stage data, lots of hatchery data and sources
 weights.aj = 2 * weights.aj;
 weights.ab = 2 * weights.ab;
-weights.am = 2 * weights.am;
+weights.am = 2 * weights.am; % short lived speceis
 weights.ab = 2 * weights.Lb;
 weights.am = 2 * weights.Lj;
 

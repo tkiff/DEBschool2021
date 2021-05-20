@@ -26,6 +26,7 @@ function [prdData, info] = predict_Argopecten_irradians(par, data, auxData)
   filterChecks = ... % f contrained to not be larger than 1 or negeative
                  f_tL1>1 || f_tL1 < 0 || ... ;
                  f_tL2>1 || f_tL2 < 0 || ... ;
+                 f_WJO>1 || f_WJO < 0 || ... ;
                  f_TJO >1 || f_TJO < 0;
    
 if filterChecks
@@ -135,7 +136,9 @@ end
   L        = (W / d_V / (1 + f * w)).^(1/3);
   [L, rows, occurence] = unique(L); % pulls out unique Length elements in increasing order
   pACSJGRD = TC * p_ref * scaled_power_j(L, f, pars_p, l_b, l_j, l_p);
+  
   pADG     = pACSJGRD(:,[1 7 5])';     % J/d,    assimilation, dissipation, growth power
+  pACSJGRD(:,1) = 0 * pACSJGRD(:,1); % exclude contribution from assimilation
   J_O      = eta_O * pADG;             % mol/d,  fluxes of organics J_X, J_V, J_E, J_P in rows
   J_M      = -n_M \ n_O * J_O;         % mol/d,  fluxes of minerals J_C, J_H, J_O, J_N in rows, A, D, G in cols
   WJO     = -24.4e3 / 24 * J_M(3,:)'; % mLO2/h, O2 consumption
