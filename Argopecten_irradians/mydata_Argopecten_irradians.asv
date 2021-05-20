@@ -115,7 +115,7 @@ data.Ri   = 2094;       units.Ri      = '#/d'; label.Ri      = 'maximum reprod r
 %% uni-variate data
 
 % Time since start of study data from aquaculture trials in Finney Creek near VIMS,
-% in Virginia, temperature was measured
+% in Virginia
 data.tL1 = [1 1 1 13 14 15 15 29 29 29 29 47 47 47 47 62 62 63 64 73 74 75 75 91 91 91 92 106 106 106 107 121 122 122 122;    % d, time since birth
             14.40 14.40 14.40 18.31 18.87 17.86 18.19 25.30 25.63 25.63 24.74 33.37 34.37 34.03 32.48 39.70 39.59 38.25 37.12 41.49 41.82 40.37 40.92 44.12 45.35 43.79 42.45 45.78 46.89 44.78 43.21 44.88 42.87 44.87 47.42]';  % mm, shell height
 data.tL1(:,2) = 0.1 * data.tL1(:,2); % convert mm to cm
@@ -124,11 +124,10 @@ temp.tL1    = C2K(25);  units.temp.tL1 = 'K'; label.temp.tL1 = 'temperature';
 comment.tL1 = 'Animals were spawned in late summer 1970, but overwintered until start of study'; 
 
 % Time since birth in Connecticut
-% temperature estimated from recent yearly averages
-data.tL2 = [1 27 114 243 286 342 443 616;    % d, time since collection
+data.tL2 = [1 27 114 243 286 342 443 616;    % d, time since birth
             1.04 2.65 4.54 4.70 4.99 5.19 6.11 6.46]';  % mm, shell height
-units.tL2   = {'d', 'cm'};  label.tL2 = {'Time since start of study', 'Shell height'};  bibkey.tL2 = 'BricKrau1992';
-temp.tL2    = C2K(12);  units.temp.tL2 = 'K'; label.temp.tL2 = 'temperature';
+units.tL2   = {'d', 'cm'};  label.tL2 = {'Time since birth', 'Shell height'};  bibkey.tL2 = 'BricKrau1992';
+temp.tL2    = C2K(15);  units.temp.tL2 = 'K'; label.temp.tL2 = 'temperature';
 comment.tL2 = 'Scallops were collected from the wild, age was recorded but not reported'; 
 
  % Temperature vs. oxygen consumption rate 
