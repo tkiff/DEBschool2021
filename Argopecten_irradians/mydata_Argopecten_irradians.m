@@ -62,6 +62,7 @@ data.ab   = 1;           units.ab      = 'd'; label.ab      = 'age at birth';   
   % older studies report longer times
         % Gutsell 1930, 42 hours @ 25 C
         % Sastry 1965 48 @ 24 C
+        % Zheng et al 30 hrs @ 23 deg. C
         % Use average?
 data.aj   = 12.2;           units.aj      = 'd'; label.aj      = 'age at metamorphosis'; bibkey.aj = {'LoosDavi1963','Sast1965','CastDugg1971'};
   temp.aj = C2K(23.2);      units.temp.aj = 'K'; label.temp.aj = 'temperature';
@@ -107,10 +108,18 @@ data.Wdj = 4.86e-6;     units.Wdj = 'g'; label.Wdj = 'dry tissue weight at metam
 data.Wdp = 1.6;     units.Wdp = 'g'; label.Wdp = 'dry tissue weight at puberty';       bibkey.Wdp = {'Guess','BricKrau1992'};
 data.Wdi = 5.3;     units.Wdi = 'g'; label.Wdi = 'ultimate dry tissue weight';         bibkey.Wdi = {'Guess','BricKrau1992'};
 
-data.Ri   = 2094;       units.Ri      = '#/d'; label.Ri      = 'maximum reprod rate'; bibkey.Ri = {'Oest1998'};
-  temp.Ri = C2K(18);  units.temp.Ri = 'K';   label.temp.Ri = 'temperature';
-  % 764360 eggs / 365 days, possibly spawn up to 1 million but no real source
-  % guessed on average VA temp
+data.Ri1  = 78e4/365; units.Ri1  = '#/d'; label.Ri1  = 'maximum reprod rate at SL 5.15 cm';     bibkey.Ri1  = 'Zhen2006';   
+  temp.Ri1 = C2K(18); units.temp.Ri1 = 'K'; label.temp.Ri1 = 'temperature';
+data.Ri2  = 161.1e4/365; units.Ri2  = '#/d'; label.Ri2  = 'maximum reprod rate at SL 5.49 cm';     bibkey.Ri2  = 'Zhen2006';   
+  temp.Ri2 = C2K(18); units.temp.Ri2 = 'K'; label.temp.Ri2 = 'temperature';
+  
+data.GSI  = 0.2; units.GSI  = '-';  label.GSI  = 'gonado somatic index';        bibkey.GSI  = 'guess';   
+  temp.GSI = C2K(25);  units.temp.GSI = 'K'; label.temp.GSI = 'temperature';
+  comment.GSI = 'GSI = 0.33 for E. arcuatus';
+
+  
+% data.Ww0 = 1.28e-7 ; units.Ww0 = 'g';    label.Ww0 = 'wet weight of the egg';             bibkey.Ww0 = 'Peck2016';
+%    comment.Ww0 = 'based on egg diameter of 62.5 mum: pi/6*0.00625^3';
 
 %% uni-variate data
 
@@ -130,31 +139,49 @@ data.tL2 = [1 27 114 243 286 342 443 616;    % d, time since collection
 units.tL2   = {'d', 'cm'};  label.tL2 = {'Time since start of study', 'Shell height'};  bibkey.tL2 = 'BricKrau1992';
 temp.tL2    = C2K(12);  units.temp.tL2 = 'K'; label.temp.tL2 = 'temperature';
 comment.tL2 = 'Scallops were collected from the wild, age was recorded but not reported'; 
+% times since settlement (yr), somatic wet weight (g)
+data.tWd = [1 27 114 243 286 342 443 616;
+           0.01 0.25 1.01 1.01 1.56 1.21 3.20 2.95]';    
+units.tWd = {'d', 'g'}; label.tWd = {'Time since start of study', 'shell-free wet weight'};
+temp.tWd = C2K(12); units.temp.tWd = 'K'; label.temp.tWd = 'temperature';
+comment.tWd = ''; 
+bibkey.tWd = 'BricKrau1992';
 
- % Temperature vs. oxygen consumption rate 
-data.TJO = [1.52 7.39 8.63 10.43 11.40 15.67 17.57 20.32 23.05; % °C, temperature
-            0.067 0.199 0.345 0.367 0.488 1.043 0.931 0.814 1.098]'; % mLO2/h, oxygen consumption rate
-units.TJO = {'°C', 'mL/h'}; label.TJO = {'temperature', 'O_2 consumption rate'}; bibkey.TJO = 'BricEpp1987';
+% % Temperature vs. oxygen consumption rate 
+% data.TJO = [1.52 7.39 8.63 10.43 11.40 15.67 17.57 20.32 23.05; % °C, temperature
+%             0.067 0.199 0.345 0.367 0.488 1.043 0.931 0.814 1.098]'; % mLO2/h, oxygen consumption rate
+% units.TJO = {'°C', 'mL/h'}; label.TJO = {'temperature', 'O_2 consumption rate'}; bibkey.TJO = 'BricEpp1987';
 
-%Dry weight vs. oxygen consumption rate at different temperatures
-data.WJO = [0.457 0.677 0.675 0.678 0.746 0.912 0.918 0.994 1.113 0.963 0.970 1.064 1.290 0.959 0.960 1.537 1.543 1.510 1.522 1.703 2.024 1.694 2.026 2.254 2.377 2.256 2.540 2.642 2.734 2.717 2.561 3.185 3.183 2.927; % g, dry weight
-            0.124 0.155 0.164 0.176 0.195 0.170 0.158 0.163 0.187 0.195 0.210 0.214 0.234 0.274 0.329 0.350 0.394 0.195 0.238 0.226 0.246 0.274 0.295 0.318 0.335 0.356 0.338 0.318 0.381 0.399 0.413 0.394 0.375 0.486]'; % mLO2/h, oxygen consumption rate
-units.WJO = {'g', 'mL/h'}; label.WJO = {'dry weight', 'O_2 consumption rate'}; bibkey.WJO = 'BricEpp1987';
-temp.WJO = C2K(7.4); units.temp.WJO = 'K'; label.temp.WJO = 'temperature';
+% Dry weight vs. oxygen consumption rate at different temperatures
+% Removed for now,predictions way off
+% data.WJO = [0.457 0.677 0.675 0.678 0.746 0.912 0.918 0.994 1.113 0.963 0.970 1.064 1.290 0.959 0.960 1.537 1.543 1.510 1.522 1.703 2.024 1.694 2.026 2.254 2.377 2.256 2.540 2.642 2.734 2.717 2.561 3.185 3.183 2.927; % g, dry weight
+%             0.124 0.155 0.164 0.176 0.195 0.170 0.158 0.163 0.187 0.195 0.210 0.214 0.234 0.274 0.329 0.350 0.394 0.195 0.238 0.226 0.246 0.274 0.295 0.318 0.335 0.356 0.338 0.318 0.381 0.399 0.413 0.394 0.375 0.486]'; % mLO2/h, oxygen consumption rate
+% units.WJO = {'g', 'mL/h'}; label.WJO = {'dry weight', 'O_2 consumption rate'}; bibkey.WJO = 'BricEpp1987';
+% temp.WJO = C2K(7.4); units.temp.WJO = 'K'; label.temp.WJO = 'temperature';
+
+% length-GSI
+% Removed for now use GSI as Univariate data
+% data.LGSI = [3.8 4.5 5.0 5.6 6.1 6.7 7.2; %length (mm),GSI(-) 
+%              0.44 0.47 0.51 0.50 0.38 0.34 0.30]';
+% units.LGSI= {'cm', 'g'}; label.LGSI = { 'shell length', 'GSI'}; 
+% temp.LGSI = C2K(12); units.temp.LGSI = 'K'; label.temp.LGSI = 'temperature'; 
+% bibkey.LGSI = {'Morl2018'};
+% comment.LGSI = 'data by Rothera Simon';
 
 
 %% set weights for all real data
 weights = setweights(data, []);
-% confident in some early life stage data, lots of hatchery data and sources
+% % confident in some early life stage data, lots of hatchery data and sources
 weights.aj = 2 * weights.aj;
 weights.ab = 2 * weights.ab;
 weights.am = 2 * weights.am; % short lived speceis
 weights.ab = 2 * weights.Lb;
 weights.am = 2 * weights.Lj;
-
-% Less confident in dry weights, used another species to guess
-weights.Wdb = 0 * weights.Wdb;
-weights.Wdj = 0 * weights.Wdj;
+weights.GSI = 5 * weights.GSI;
+% 
+% % Less confident in dry weights, used another species to guess
+% weights.Wdb = 0 * weights.Wdb;
+% weights.Wdj = 0 * weights.Wdj;
 
 %% overwriting weights (remove these remarks after editing the file)
 % the weights were set automatically with the function setweigths,
