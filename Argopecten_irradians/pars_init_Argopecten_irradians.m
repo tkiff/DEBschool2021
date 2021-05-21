@@ -13,7 +13,7 @@ par.kap_X = 0.8;      free.kap_X = 0;   units.kap_X = '-';        label.kap_X = 
 par.kap_P = 0.1;      free.kap_P = 0;   units.kap_P = '-';        label.kap_P = 'faecation efficiency of food to faeces'; 
 par.v = 0.012426;     free.v     = 1;   units.v = 'cm/d';         label.v = 'energy conductance'; 
 par.kap = 0.76981;    free.kap   = 1;   units.kap = '-';          label.kap = 'allocation fraction to soma'; 
-par.kap_R = 0.95;     free.kap_R = 0;   units.kap_R = '-';        label.kap_R = 'reproduction efficiency'; 
+par.kap_R = 0.95/2;     free.kap_R = 0;   units.kap_R = '-';        label.kap_R = 'reproduction efficiency'; 
 par.p_M = 716.623;    free.p_M   = 1;   units.p_M = 'J/d.cm^3';   label.p_M = '[p_M], vol-spec somatic maint'; 
 par.p_T = 0;          free.p_T   = 0;   units.p_T = 'J/d.cm^2';   label.p_T = '{p_T}, surf-spec somatic maint'; 
 par.k_J = 0.002;      free.k_J   = 0;   units.k_J = '1/d';        label.k_J = 'maturity maint rate coefficient'; 
